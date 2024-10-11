@@ -6,9 +6,10 @@ import { createInertiaApp, Head, Link } from "@inertiajs/vue3";
 import { ZiggyVue } from "../../vendor/tightenco/ziggy";
 
 import Main from "./Layouts/Main.vue";
+import { setThemeOnLoad } from "./theme";
 
 createInertiaApp({
-    title: (title) => `My App ${title}`,
+    title: (title) => `Listing App ${title}`,
     resolve: (name) => {
         const pages = import.meta.glob("./Pages/**/*.vue", { eager: true });
         let page = pages[`./Pages/${name}.vue`];
@@ -29,3 +30,5 @@ createInertiaApp({
         showSpinner: true,
     },
 });
+
+setThemeOnLoad()
