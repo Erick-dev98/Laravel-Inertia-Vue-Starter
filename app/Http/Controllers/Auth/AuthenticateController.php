@@ -11,7 +11,10 @@ class AuthenticateController extends Controller
 {
     public function create()
     {
-        return Inertia::render('Auth/Login');
+        // Grab the status prop from forget password
+        return Inertia::render('Auth/Login', [
+            'status' => session('status')
+        ]);
     }
 
     public function store(Request $request)
@@ -24,7 +27,8 @@ class AuthenticateController extends Controller
         if (Auth::attempt($credentials, $request->boolean('remember'))) {
             $request->session()->regenerate();
 
-            return redirect()->intended();
+            return redirect()->intended('dashboard');
+            // return redirect()->route('home');
         }
 
         return back()->withErrors([

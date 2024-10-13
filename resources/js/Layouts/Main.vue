@@ -25,7 +25,7 @@ const show = ref(false)
                 <div v-if="user" class="relative">
                     <div @click="show = !show"
                         class="flex items-center gap-2 px-3 py-1 rounded-lg hover:bg-slate-700 cursor-pointer"
-                        :class="{ 'bg-slate-700': show}">
+                        :class="{ 'bg-slate-700': show }">
                         <p>{{ user.name }}</p>
                         <i class="fa-solid fa-angle-down"></i>
                     </div>
@@ -34,7 +34,10 @@ const show = ref(false)
                     <div v-show="show" @click="show = false"
                         class="absolute z-50 top-16 right-0 bg-slate-800 text-white rounded-lg border-slate-300 border overflow-hidden w-40">
 
-                        <Link class="block w-full px-6 py-3 hover:bg-slate-700 text-left">Dashboard</Link>
+                        <Link :href="route('profile.edit')" class="block w-full px-6 py-3 hover:bg-slate-700 text-left">
+                        Profile</Link>
+                        <Link :href="route('dashboard')" class="block w-full px-6 py-3 hover:bg-slate-700 text-left">
+                        Dashboard</Link>
                         <Link :href="route('logout')" method="post" as="button"
                             class="block w-full px-6 py-3 hover:bg-slate-700 text-left">
                         Logout</Link>
